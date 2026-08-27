@@ -20,7 +20,7 @@
 .
 --== RELEASE NOTES / START ==--
 
-= August 27, 2026 - v1.0
+= 2026-08-27_v1.0
 Site published.
 This file will contain site updates.
 Any news could be found on the Web.
