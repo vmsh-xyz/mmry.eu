@@ -1,26 +1,13 @@
 <!DOCTYPE html>
-<html lang="bg" data-theme="dark">
+<html lang="bg" data-theme="modern-dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="favicon.png">
     <title>mmry.eu</title>
     <style>
-        :root {
-            /* Цветова палитра: Бяло, Зелено, Червено (Светла тема) */
-            --bg-color: #f8f9fa;
-            --card-bg: #ffffff;
-            --text-color: #1a1a1a;
-            --text-muted: #555555;
-            --border-color: #e0e0e0;
-            --accent-green: #00875a;
-            --accent-red: #d9381e;
-            --badge-bg: #e6f4ea;
-            --badge-text: #00875a;
-        }
-
-        [data-theme="dark"] {
-            /* Тъмна тема с акценти */
+        /* === 1. MODERN DARK (По подразбиране) === */
+        [data-theme="modern-dark"] {
             --bg-color: #121413;
             --card-bg: #1c1f1d;
             --text-color: #e8ece9;
@@ -30,16 +17,64 @@
             --accent-red: #f87171;
             --badge-bg: #1b332b;
             --badge-text: #34d399;
+            --font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+            --border-style: solid;
+            --border-width: 1px;
+            --radius: 8px;
+            --header-border: 2px solid var(--accent-green);
+            --link-color: #34d399;
+        }
+
+        /* === 2. MODERN LIGHT === */
+        [data-theme="modern-light"] {
+            --bg-color: #f8f9fa;
+            --card-bg: #ffffff;
+            --text-color: #1a1a1a;
+            --text-muted: #555555;
+            --border-color: #e0e0e0;
+            --accent-green: #00875a;
+            --accent-red: #d9381e;
+            --badge-bg: #e6f4ea;
+            --badge-text: #00875a;
+            --font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+            --border-style: solid;
+            --border-width: 1px;
+            --radius: 8px;
+            --header-border: 2px solid var(--accent-green);
+            --link-color: #00875a;
+        }
+
+        /* === 3. RETRO WEB 1.0 (GeoCities / 90s Style) === */
+        [data-theme="retro"] {
+            --bg-color: #000000;
+            --card-bg: #050a05;
+            --text-color: #00ff66;
+            --text-muted: #00cc55;
+            --border-color: #00ff66;
+            --accent-green: #00ff00;
+            --accent-red: #ff3333;
+            --badge-bg: #003300;
+            --badge-text: #00ff00;
+            --font-family: "Courier New", Courier, monospace;
+            --border-style: groove;
+            --border-width: 3px;
+            --radius: 0px;
+            --header-border: 4px double #00ff66;
+            --link-color: #ffff00;
         }
 
         body {
-            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+            font-family: var(--font-family);
             background-color: var(--bg-color);
             color: var(--text-color);
             margin: 0;
             padding: 20px;
-            transition: background-color 0.3s ease, color 0.3s ease;
+            transition: background-color 0.2s ease, color 0.2s ease;
             line-height: 1.6;
+        }
+
+        a {
+            color: var(--link-color);
         }
 
         .container {
@@ -52,7 +87,7 @@
             justify-content: space-between;
             align-items: center;
             padding-bottom: 20px;
-            border-bottom: 2px solid var(--accent-green);
+            border-bottom: var(--header-border);
             margin-bottom: 30px;
         }
 
@@ -62,20 +97,17 @@
             color: var(--accent-green);
         }
 
-        .theme-toggle {
-            background: transparent;
+        /* Падащо меню за избор на тема */
+        .theme-select {
+            background: var(--card-bg);
             border: 2px solid var(--accent-green);
             color: var(--text-color);
-            padding: 8px 16px;
-            border-radius: 20px;
+            padding: 8px 12px;
+            border-radius: var(--radius);
             cursor: pointer;
+            font-family: var(--font-family);
             font-weight: bold;
-            transition: all 0.2s ease;
-        }
-
-        .theme-toggle:hover {
-            background-color: var(--accent-green);
-            color: #ffffff;
+            outline: none;
         }
 
         /* Мета блок за изкуствения интелект и промптъра */
@@ -83,13 +115,14 @@
             background-color: var(--card-bg);
             border-left: 4px solid var(--accent-green);
             border-right: 4px solid var(--accent-red);
+            border-top: var(--border-width) var(--border-style) var(--border-color);
+            border-bottom: var(--border-width) var(--border-style) var(--border-color);
             padding: 15px 20px;
-            border-radius: 6px;
-            margin-bottom: 30px;
+            border-radius: var(--radius);
+            margin-bottom: 20px;
             text-align: center;
             font-size: 0.95rem;
             color: var(--text-muted);
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
         }
 
         .ai-credits strong {
@@ -99,8 +132,8 @@
         /* Лична секция (От промтаджийката) */
         .personal-section {
             background-color: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
+            border: var(--border-width) var(--border-style) var(--border-color);
+            border-radius: var(--radius);
             padding: 25px;
             margin-bottom: 40px;
             position: relative;
@@ -119,7 +152,7 @@
             background-color: var(--badge-bg);
             color: var(--badge-text);
             padding: 4px 12px;
-            border-radius: 12px;
+            border-radius: var(--radius);
             font-size: 0.8rem;
             font-weight: bold;
             letter-spacing: 0.5px;
@@ -136,8 +169,8 @@
         .column {
             background-color: var(--card-bg);
             padding: 25px;
-            border-radius: 8px;
-            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+            border: var(--border-width) var(--border-style) var(--border-color);
         }
 
         .column h2 {
@@ -157,7 +190,7 @@
             text-align: center;
             margin-top: 40px;
             padding-top: 20px;
-            border-top: 1px solid var(--border-color);
+            border-top: var(--border-width) var(--border-style) var(--border-color);
             color: var(--text-muted);
             font-size: 0.85rem;
         }
@@ -174,7 +207,11 @@
 <div class="container">
     <header>
         <h1><code>&gt;@&lt;/</code> mmry.eu</h1>
-        <button class="theme-toggle" onclick="toggleTheme()">🌓 Смяна на тема / Switch Theme</button>
+        <select class="theme-select" id="themeSelect" onchange="changeTheme(this.value)">
+            <option value="modern-dark"> Modern Dark</option>
+            <option value="modern-light"> Modern Light</option>
+            <option value="retro">📟 Retro Web 1.0</option>
+        </select>
     </header>
 
     <div class="ai-credits">
@@ -240,11 +277,8 @@
 </div>
 
 <script>
-    function toggleTheme() {
-        const html = document.documentElement;
-        const currentTheme = html.getAttribute('data-theme');
-        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-        html.setAttribute('data-theme', newTheme);
+    function changeTheme(themeName) {
+        document.documentElement.setAttribute('data-theme', themeName);
     }
 </script>
 
