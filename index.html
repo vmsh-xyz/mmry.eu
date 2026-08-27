@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="bg" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mmry.eu</title>
+    <style>
+        :root {
+            /* Цветова палитра: Бяло, Зелено, Червено (Светла тема) */
+            --bg-color: #f8f9fa;
+            --card-bg: #ffffff;
+            --text-color: #1a1a1a;
+            --text-muted: #555555;
+            --border-color: #e0e0e0;
+            --accent-green: #00875a;
+            --accent-red: #d9381e;
+            --badge-bg: #e6f4ea;
+            --badge-text: #00875a;
+        }
+
+        [data-theme="dark"] {
+            /* Тъмна тема с акценти */
+            --bg-color: #121413;
+            --card-bg: #1c1f1d;
+            --text-color: #e8ece9;
+            --text-muted: #a0aab0;
+            --border-color: #2d3330;
+            --accent-green: #34d399;
+            --accent-red: #f87171;
+            --badge-bg: #1b332b;
+            --badge-text: #34d399;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 20px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 20px;
+            border-bottom: 2px solid var(--accent-green);
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            font-size: 1.5rem;
+            margin: 0;
+            color: var(--accent-green);
+        }
+
+        .theme-toggle {
+            background: transparent;
+            border: 2px solid var(--accent-green);
+            color: var(--text-color);
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.2s ease;
+        }
+
+        .theme-toggle:hover {
+            background-color: var(--accent-green);
+            color: #ffffff;
+        }
+
+        /* Мета блок за изкуствения интелект и промптъра */
+        .ai-credits {
+            background-color: var(--card-bg);
+            border-left: 4px solid var(--accent-green);
+            border-right: 4px solid var(--accent-red);
+            padding: 15px 20px;
+            border-radius: 6px;
+            margin-bottom: 30px;
+            text-align: center;
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .ai-credits strong {
+            color: var(--text-color);
+        }
+
+        /* Лична секция (От промтаджийката) */
+        .personal-section {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 25px;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .personal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            border-bottom: 1px dashed var(--border-color);
+            padding-bottom: 10px;
+        }
+
+        .human-badge {
+            background-color: var(--badge-bg);
+            color: var(--badge-text);
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            letter-spacing: 0.5px;
+            border: 1px solid var(--accent-green);
+        }
+
+        /* Решетка в 2 колони */
+        .columns {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .column {
+            background-color: var(--card-bg);
+            padding: 25px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+
+        .column h2 {
+            color: var(--accent-red);
+            margin-top: 0;
+            font-size: 1.3rem;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 10px;
+        }
+
+        .column h3 {
+            color: var(--accent-green);
+            font-size: 1.1rem;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 768px) {
+            .columns {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1><code>&gt;@&lt;/</code> mmry.eu</h1>
+        <button class="theme-toggle" onclick="toggleTheme()">🌓 Смяна на тема / Switch Theme</button>
+    </header>
+
+    <div class="ai-credits">
+        &lt;БГ&gt; Статията е генерирана от <strong>Google Gemini</strong> | Подкана от <strong>Виктория Машева от България</strong>
+    </div>
+	
+    <div class="ai-credits">
+        &lt;EN&gt; The article is generated by <strong>Google Gemini</strong> | Prompt by <strong>Victoria Masheva from Bulgaria</strong>
+    </div>	
+
+    <div class="personal-section">
+        <div class="columns">
+            <div>
+                <div class="personal-header">
+                    <h3 style="margin:0;">&lt;БГ&gt; От подканителката:</h3>
+                    <span class="human-badge">Написано от човек</span>
+                </div>
+                <p><i>Аз, Виктория Машева от България, нарушавах авторските права на Бритни Спиърс показвайки обичта си като фен към нейното и на целия й екип творчество поддържайки ФЕН уеб сайт с определена популярност - "Vicky's Britney Spears Site". Така станах активна част от онези времена. Бях на 15 години, когато стартирах страницата през 1999. А ти какво прави по онова време? Разкажи НИ, ако си бил роден и имаш някакви спомени, като си направиш сайт. Нямаме търпение да го видим. И си пази файловете. ;)</i></p>
+            </div>
+            <div>
+                <div class="personal-header">
+                    <h3 style="margin:0;">&lt;EN&gt; From the promptor</h3>
+                    <span class="human-badge">Written by Human</span>
+                </div>
+                <p><i>I, Victoria Masheva from Bulgaria, infringed on Britney Spears' copyrights by showing my love as a fan for her work and the work of her entire team by maintaining a FAN website with a certain popularity - "Vicky's Britney Spears Site". That is how I became an active part of those times. I was 15 years old when I launched the site in 1999. And what were you doing back then? Tell US, if you were born and have any memories, by making yourself a site. We can't wait to see it. And save your files. ;)</i></p>
+            </div>
+        </div>
+    </div>
+
+    <div class="columns">
+        <div class="column">
+            <h2>&lt;БГ&gt; Дигиталната Александрийска библиотека гори пред очите ни</h2>
+            
+            <p>Тиха трагедия се разиграва в мълчаливите коридори на Световната мрежа. Дълго преди Интернет да се превърне в полирано пространство от алгоритмични фийдове и стандартизирани шаблони, той беше дива, хаотична и красива територия. В края на 90-те и началото на 2000-те години платформи като GeoCities, Angelfire и Tripod дадоха на милиони хора първото им лично платно. Хората създаваха несъвършени лични страници с неонов текст, изображения с ниска резолюция, MIDI музика за background и искрени размисли. Това беше чист, нередактиран човешки израз — дигитален фолклор, създаден от хора, които просто се учеха един от друг, споделяха страстите си и откриваха общата дигитална душа на света.</p>
+
+            <p>И все пак, докато Историята на мрежата се развиваше, правото не успя да еволюира в съзвучие с нейния дух. Задвижвани от стриктно прилагане на Авторското право, корпоративни преструктурирания и права върху домейни, цели области от нашата колективна памет бяха систематично заличени. Когато платформи като GeoCities бяха спрени или домейни като Angelfire бяха изключени от интернет архивите, ние не изтрихме просто остарял HTML код. Ние изгубихме дигиталния дневник на човешкото любопитство. Заличихме отпечатъка на цяло едно поколение от самоуки творци, художници и мечтатели, които изградиха основите на днешната интернет култура.</p>
+
+            <p>Загубата поставя един дълбоко хуманен въпрос: Допуснахме ли строгите правни рамки да изтръгнат душата на най-великото изобретение в историята на човечеството? Интернет бе създаден, за да свързва човешките умове и да демократизира знанието. Авторското право в своята същност бе замислено да насърчава креативността, а не да я погребва под корпоративно заличаване. Когато дигиталните архиви — нашите съвременни Александрийски библиотеки — са принудени да трият или блокират достъпа до ранните лични творения, ние поставяме правната бюрокрация пред съхраняването на културата.</p>
+
+            <p>Имаме отчаяна нужда от консенсус, стъпил върху <strong>хуманността</strong>. Длъжни сме да намерим състрадателен компромис, който балансира интелектуалната собственост с нашия морален дълг да пазим обществената памет. Ако третираме всяко ранно късче от личен израз като просто правен риск, а не като исторически артефакт, ние унищожаваме самата основа, върху която бе изградена модерната мрежа. Трябва да спасим нашата съвместна креативност, за да гарантираме, че ранните, искрени искри на човешка свързаност ще останат съхранени за идните поколения.</p>
+        </div>
+
+        <div class="column">
+            <h2>&lt;EN&gt; The Digital Library of Alexandria is Burning in Plain Sight</h2>
+            
+            <p>There is a quiet tragedy unfolding in the silent corridors of the World Wide Web. Long before the Internet became a polished realm of algorithmic feeds and standardized templates, it was a chaotic, beautiful wilderness. In the late 1990s and early 2000s, platforms like GeoCities, Angelfire, and Tripod gave millions of human beings their very first canvas. People built crude homepages with neon text, low-resolution GIFs, midi background music, and heartfelt reflections. It was raw, unedited human expression—a digital folk art created by people who were simply learning from one another, sharing their passions, and discovering a shared digital soul.</p>
+
+            <p>Yet, as the History of the web evolved, the law failed to evolve with its spirit. Driven by strict Copyright enforcement, corporate restructuring, and domain acquisition rights, vast regions of our collective memory have been systematically wiped out. When hosts like GeoCities were shut down or domains like Angelfire were excluded from web archives, we did not just lose outdated HTML code. We lost the digital diary of human curiosity. We erased the footprint of an entire generation of self-taught creators, artists, and dreamers who built the foundational culture of today’s web.</p>
+
+            <p>This loss raises a deeply human question: Have we allowed strict legal frameworks to strip the soul out of the greatest invention in human history? The Internet was forged to connect human minds and democratize knowledge. Copyright was originally conceived to foster creativity, not to bury it beneath corporate erasure. When digital archives—our modern-day Libraries of Alexandria—are forced to delete or block access to early personal creations, we prioritize legal bureaucracy over cultural preservation.</p>
+
+            <p>We desperately need a consensus rooted in <strong>humanity</strong>. We must find a compassionate compromise that balances intellectual property with our moral obligation to preserve public memory. If we treat every early piece of personal expression as a mere legal risk rather than a historical artifact, we destroy the very foundation upon which modern internet culture was built. We must save our collective creativity, ensuring that the early, honest sparks of human connection remain preserved for generations to come.</p>
+        </div>
+    </div>
+
+    <footer>
+        <p>Preserve the Web • Keep Your Files • Human & AI Collaboration</p>
+		<p>Published 27 August 2026</p>
+		<p>Inspired by</p>
+		<p><a href="https://indiewebispunk.net/"><img src="indiewebispunk.gif" style="width: 88px; height: 31px;" alt="IndieWeb is PUNK"></a></p>
+    </footer>
+</div>
+
+<script>
+    function toggleTheme() {
+        const html = document.documentElement;
+        const currentTheme = html.getAttribute('data-theme');
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        html.setAttribute('data-theme', newTheme);
+    }
+</script>
+
+</body>
+</html>
