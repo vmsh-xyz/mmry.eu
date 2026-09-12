@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="icon" type="image/png" href="favicon-200.png">
     <title>mmry.eu</title>
     <meta name="description"
         content="{en} it was a chaotic, beautiful wilderness | {бг} той беше хаотична и красива територия">
@@ -12,7 +12,6 @@
     <meta property="og:image:type" content="image/jpeg">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content="https://mmry.eu/mmry.eu.png">
-    <script src="https://www.midijs.net/lib/midi.js"></script>
     <style>
         /* === 1. MODERN DARK (По подразбиране) === */
         [data-theme="modern-dark"] {
@@ -244,7 +243,7 @@
         <header>
             <h1><code>&gt;@&lt;/</code> mmry.eu</h1>
             <div class="header-controls">
-                <button class="audio-btn" id="midiBtn" onclick="toggleMIDI()">🎵 MIDI: OFF</button>
+                <button class="audio-btn" id="midiBtn" onclick="toggleMIDI()">🎵</button>
                 <select class="theme-select" id="themeSelect" onchange="changeTheme(this.value)">
                     <option value="modern-dark"> Modern Dark</option>
                     <option value="modern-light"> Modern Light</option>
@@ -381,20 +380,24 @@
 
         // Управление на MIDI възпроизвеждането
         let isPlaying = false;
-        const midiFilePath = 'memory-cats.mid';
+        const midiFile = new Audio('memory-cats.mp3');
 
         function toggleMIDI() {
             const btn = document.getElementById('midiBtn');
             if (!isPlaying) {
-                MIDIjs.play(midiFilePath);
-                btn.innerText = '🎶 MIDI: ON';
+                midiFile.currentTime = 0;
+                midiFile.play().catch(error => {
+                    console.log('Аудиото не можа да се възпроизведе:', error);
+                });
+                btn.innerText = '🎶';
                 isPlaying = true;
             } else {
-                MIDIjs.stop();
-                btn.innerText = '🎵 MIDI: OFF';
+                midiFile.pause();
+                btn.innerText = '🎵';
                 isPlaying = false;
             }
         }
+
     </script>
 
 </body>
